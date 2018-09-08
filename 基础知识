@@ -1,0 +1,137 @@
+1、编写源程序
+（1）Hello World
+public class Hello{
+	public static void main(String[] args){
+		System.out.println("Hello World!");
+	}
+}
+
+每个java程序至少应该有一个类
+类名以大写字母开头
+为了运行某个类，该类必须包含名为main的方法，程序是从main处开始执行的
+Java的每条语句以;作为结束符
+注释与C++相同
+
+块：以{}括起来，形成一个块
+每个类都有一个将该类的数据与方法放在一起的类块
+每个方法都有一个将该方法中的语句放在一起的方块
+
+（2）文件命名规则
+
+源文件的扩展名必须是.java，并且文件名必须与公共类名（public class）完全相同
+编译与运行之前，安装JDK
+
+若没有语法错误，经过编译器后会生成扩展名为.class的字节码文件
+
+Java的字节码可以在不同的硬件平台与操作系统上运行
+
+执行Java程序就是在运行程序的字节码，可以在任何一个装有JVM（Java虚拟机）的平台上运行字节码
+
+javac：指令用于编译.java文件，生成.class文件
+
+用java运行.class时，不用带上扩展名
+
+2、小知识
+
+（1）字符串常量不能跨行
+（2）+：可以用于两个数字相加；也可以用于连接两个字符串
+
+3、输入与输出
+
+标准输出设备：System.out   默认为显示屏    使用println可以输出基本值与字符串
+标准输入设备：System.in    默认为键盘      
+Java不直接支持控制台输入，但是可以用Scanner类来创建它的对象，以读取来自System.in的输入
+
+（1）Scanner对象的方法
+nextByte():读取一个byte类型的整数
+nextShort():
+...Int():
+...Long()
+...Float():
+...Double():
+以上读取的都是数
+next():读取一个字符串
+...Line():读取一行文本
+
+import java.util.Scanner;
+public class compute {
+	public static void main(String[] args){
+		Scanner input= new Scanner(System.in);
+		
+		System.out.print("Enter a number of radius: ");
+		
+		double radius = input.nextDouble();
+		
+		double area = radius*radius*3.1415926;
+		
+		System.out.print("The area for the circle of radius "+radius+" is "+area);
+		
+	}
+}
+print与println很相似，不同之处在于，println在输出后会将光标移动到下一行
+
+
+3、标识符
+标识符由字母、数字、下划线和美元符号组成
+不能由数字开头，也不能是true、false和null
+
+4、变量
+使用需要先声明变量（Python不用）
+使用方法与C++大致相同
+	System.out.println(x=1);
+  等价于：
+	x=1;
+	System.out.println(x);
+  
+5、定名常量
+
+声明语句：
+final datatype CONSTANTNAME=VALUE;
+单词final是声明常量的Java关键字，常量名一般要大写
+
+6、数据类型
+byte:8位带符号整数
+short:16位带符号整数
+int:32位带符号整数
+long:64位带符号数
+float:32位
+double:64位
+
+7、数值直接量
+（1）整型直接量
+例如：int n=34;
+double d=17.5;
+这里的34、17.5就是直接量
+整形直接量默认是int型，如果太大超了范围，则会：编译错误
+例如 byte b=128;   编译错误
+如果直接量太大，超了int的表示范围，则应该在末尾加一个L或者l（推荐大写L）
+
+（2）浮点型直接量
+浮点小数一般默认为double型，可以在末尾加f或者F来表示该数为float型
+也可以在末尾加D或者d来表示该数为double型
+
+（3）科学记数法
+以10为底，写成e
+
+显示格林威治时间：
+package test1;
+
+public class time {
+	public static void main(String[] args){
+		long mseconds=System.currentTimeMillis();//获得从GMT1970.1.1到当前时刻的毫秒值
+		long totalSeconds=mseconds/1000;
+		long currentSeconds=totalSeconds%60;
+		long totalMinutes=totalSeconds/60;
+		long currentMinutes=totalMinutes%60;
+		long totalHours=totalMinutes/60;
+		long currentHours=totalHours%24;
+		System.out.print(currentHours+":"+currentMinutes+":"+currentSeconds+" GMT");
+	}
+
+}
+
+
+
+
+
+
