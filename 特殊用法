@@ -1,0 +1,9 @@
+1、输入输出重定向
+
+如果需要输入大量的数值，可以用txt文件保存
+例如：在input.txt文件中有大量数值，并且数值之间用空格分开
+java SentineValue < input.txt
+这条指令被称为：输入重定向，程序将从input.txt中读取输入
+
+java ClassName > output.txt
+输出重定向，将输出发送给文件
