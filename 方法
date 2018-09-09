@@ -39,3 +39,71 @@ main方法：和其他方法的唯一区别是，它是由Java虚拟机调用的
 
 nprintln("Hello",3)  把Hello打印三次
 
+3、重载方法
+
+之前的max方法只能用于int型整数，如果想要让double或者其他类型的数值也能使用这个函数，就要重载
+
+在一个类中，有两个方法的名字一样，但是具有不同的参数列表，这就是方法的重载
+Java编译器会根据签名来决定使用哪个
+例如：
+	public static int max(int a,int b){
+		if(a>b)
+			return a;
+		else
+			return b;
+	}
+	public static int max(double a,double b){
+		if(a>b)
+			return a;
+		else
+			return b;
+	}
+	public static int max(float a,float b){
+		if(a>b)
+			return a;
+		else
+			return b;
+	}
+如果使用max(2,2.5)会报错吗？
+不会，int型的参数会自动转为double型
+
+重载的方法必须要有不同的参数列表，不能基于不同的修饰符或者返回值类型来重载函数
+例如：
+public static int max(int a,double b)
+public static int max(double a,int b)
+这两个方法谁也不比谁精确，所以这个调用是有歧义的，会产生编译错误
+
+4、变量的作用域：
+在{}内定义的，作用域是这个{}内
+for(int i=0;i<10;i++)
+{//i的作用域
+}
+
+5、Math类
+注意：Math类同System类一样不用导入，自带就有
+
+pow(x,y):x^y
+random():生成随机数
+取值范围：0.0<=random()<1.0
+
+（1）三角函数：sin()、cos()、tan()、asin()、acos()、atan()
+（2）角度转弧度：toRadians()、toDegrees()
+（3）常量：PI、E（自然对数的底）
+
+（4）指数函数方法:
+exp()
+log():ln()
+log10()
+sqrt():开方
+
+（5）取整方法：
+ceil():向上取整
+floor():向下取整
+rint():取最近的整数，当两个数一样近时，取偶数的那个
+round():四舍五入
+
+
+
+
+
+
