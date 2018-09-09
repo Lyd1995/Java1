@@ -1,3 +1,10 @@
+前言：java的使用方式大致与C++一样
+主要是：
+（1）形参与实参
+（2）print()
+不同点：输入方式
+
+
 1、编写源程序
 （1）Hello World
 public class Hello{
