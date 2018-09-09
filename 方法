@@ -1,0 +1,41 @@
+1、定义方法：
+
+语法：
+
+修饰符  返回值类型  方法名（参数列表）{
+//方法体
+}
+
+其中：修饰符  返回值类型  方法名（参数列表） 也称：方法头
+
+	public static int max(int a,int b){  
+		if(a>b)
+			return a;
+		else
+			return b;
+	}
+  public static：修饰符 
+  
+2、调用方法：
+
+在类中调用该类的方法，直接用方法名即可
+例如：
+public class PrimeNumber{
+	public static int max(int a,int b){
+		if(a>b)
+			return a;
+		else
+			return b;
+	}
+	public static void main(String[] args){
+		int i=7,j=10;
+		int a=max(i,j);
+		System.out.println(a);
+	}
+}
+main方法：和其他方法的唯一区别是，它是由Java虚拟机调用的，它的方法头固定不变
+
+调用其他类的方法时，采用"类名.方法名"的形式
+
+nprintln("Hello",3)  把Hello打印三次
+
