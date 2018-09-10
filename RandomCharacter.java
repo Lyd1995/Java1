@@ -26,3 +26,4 @@ public class RandomCharacter{
 		System.out.println(ch1);
 	}
 }
+
