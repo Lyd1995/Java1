@@ -133,6 +133,66 @@ final static double PI=3.1415926
 
 创建方法时，如果这个方法不依赖于实例，则应该声明为静态方法
 
+package test;
+public class TestCircle2 {
+	public static void main(String[] args){
+		System.out.println("Before create object");
+		System.out.println("The number of Circle object is"+Circle2.numberOfObjects);
+		
+		Circle2 c1=new Circle2();
+		
+		System.out.println("\nAfter create object c1");
+		System.out.println("c1: radius ("+c1.radius+") and number of Circle object ("+Circle2.numberOfObjects+")");
+		
+		c1.radius=9.0;
+		Circle2 c2=new Circle2(7.0);
+		
+		System.out.println("\nAfter create object c2 and modifying c1");
+		System.out.println("c1: radius ("+c1.radius+") and number of Circle object ("+Circle2.numberOfObjects+")");
+		System.out.println("c2: radius ("+c2.radius+") and number of Circle object ("+Circle2.numberOfObjects+")");
+		
+		System.out.println("c1: radius ("+c1.radius+") and area of Circle is "+c1.getArea());
+		System.out.println("c2: radius ("+c2.radius+") and area of Circle is "+c2.getArea());
+	}
+}
+
+package test;
+public class Circle2 {
+	double radius;
+	static int numberOfObjects=0;
+	
+	Circle2(){
+		radius=1;
+		numberOfObjects++;
+	}
+	
+	Circle2(double newRadius){
+		radius=newRadius;
+		numberOfObjects++;
+	}
+	
+	static int getNumberOfCircle(){
+		return numberOfObjects;
+	}
+	
+	double getArea(){
+		return radius*radius*Math.PI;
+	}
+}
+输出：
+Before create object
+The number of Circle object is0
+
+After create object c1
+c1: radius (1.0) and number of Circle object (1)
+
+After create object c2 and modifying c1
+c1: radius (9.0) and number of Circle object (2)
+c2: radius (7.0) and number of Circle object (2)
+c1: radius (9.0) and area of Circle is 254.46900494077323
+c2: radius (7.0) and area of Circle is 153.93804002589985
+上面是一个实例
+
 
 7、
 
