@@ -1,1 +1,70 @@
-1、
+1、定义对象的类
+（1）对象的状态：也称之为特征或者属性
+例如：圆有半径，这是它的属性；矩形有长和宽，这是它的属性
+
+定义属性（特征、状态）要求具有不可再分性
+例如：面积也可以认为是圆的一个属性，但是它可以由半径计算得出，因此是冗余的属性，定义时应该尽可能减少这样的冗余属性
+
+（2）对象的行为：由方法定义，调用对象的一个方法，就要求对象完成一个动作。
+例如：可以为圆定义一个getArea()的方法来获得面积
+
+使用通用类来定义同一类型的对象，因此类可以说是一个模板、蓝本或者说合约
+
+一个对象是类的一个实例，对象和实例经常可以互换
+
+（3）构造方法
+这是一类特殊的方法，调用这个方法可以创建一个新的对象
+构造方法本身是可以完成任意动作的，但是设计构造方法的初衷还是为了完成初始化动作，例如：初始化对象的数据域
+
+*****构造方法名必须与类名相同
+*****构造方法没有返回值，甚至连void都没有
+*****构造方法是在创建一个对象，使用new操作符时调用的
+构造方法的作用是初始化对象
+构造方法也可以重载
+
+（4）主类：包含名为main的方法的类，被称作主类
+没有main方法的类是不能运行的
+
+
+2、UML类图（Unified Modeling Language，UML）
+类的模板、对象的图解可以使用UML的图形符号进行标准化
+
+一般而言，类图分为三层：
+第一层是类名
+第二层是数据域
+第三层是方法
+
+
+3、类的使用方法
+
+（1）多个类可以放到同一个文件中，但是文件中只能有一个类是公共的，也就是：被public修饰的类只能有一个
+（2）文件名必须与公共类的名字一样
+public class TestCircle1{
+	public static void main(String[] args){
+		Circle1 circle1=new Circle1();
+		System.out.println("The area of the circle of radius "+circle1.radius+" is "+circle1.getArea());
+		
+		Circle1 circle2=new Circle1(25);
+		System.out.println("The area of the circle of radius "+circle2.radius+" is "+circle2.getArea());
+	}
+}
+		
+class Circle1{
+	double radius;
+		
+	Circle1(){
+		radius=1;
+	}
+		
+	Circle1(double newRadius){
+		radius=newRadius;
+	}
+		
+	double getArea(){
+		return radius*radius*Math.PI;
+	}
+}
+上面这段代码，就是在一个文件里放两个类
+
+猜测：
+（1）只有公共类才能定义main方法
