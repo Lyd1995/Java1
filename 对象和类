@@ -191,12 +191,40 @@ c1: radius (9.0) and number of Circle object (2)
 c2: radius (7.0) and number of Circle object (2)
 c1: radius (9.0) and area of Circle is 254.46900494077323
 c2: radius (7.0) and area of Circle is 153.93804002589985
-上面是一个实例
+
+7、可见修饰符：public
+
+被public修饰的类、方法、数据域，表示他们可以被任何类访问
+没有使用可见修饰符，默认类、方法、数据域是可以被同一个包中的任何一个类访问的，这称作包私有或者包内访问
+
+注意：包可以用来组织类，为了完成这个目标，需要在程序第一行写：
+package packageName;
+
+如果定义时没有声明包，则表示把它放进默认包
+
+除了public修饰符外，还有private和protected修饰符
+
+private修饰符限定的方法和数据域只能在它自己的类中被访问，
+这里可以看出private不能修饰类
+
+一个类如果没有被public修饰，那么它只能在同一个包内被访问
+
+私有方法或者数据域前面加-
+
+8、数据域封装
+为了防止数据被篡改，为了方便维护，需要将数据域封装
+
+因此将数据域定义为私有的（private），同时给出get（访问器）和set（修改器）
 
 
-7、
+9、对象数组
+和定义一般的数组一样：
+类名[] 对象数组名 = new 类名[数组个数];
 
-
-
+使用new创建数组、对象等等，其初始值会设置为默认值，引用类型的值被设为null
+注意：
+int i;
+System.out.println(i);
+这么做是会报错的
 
 
