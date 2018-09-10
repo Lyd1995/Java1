@@ -66,5 +66,40 @@ class Circle1{
 }
 上面这段代码，就是在一个文件里放两个类
 
-猜测：
-（1）只有公共类才能定义main方法
+
+4、Java库的类
+
+（1）Date类
+java.util.Date
+public class test1{
+	public static void main(String[] args){
+		java.util.Date date=new java.util.Date();
+		System.out.println("The elapsed time since Jan 1, 1970 is "+date.getTime()+" milliseconds");
+		System.out.println(date.toString());
+	}
+}
+输出：
+The elapsed time since Jan 1, 1970 is 1536574486016 milliseconds
+Mon Sep 10 18:14:46 GMT+08:00 2018
+两个方法：
+getTime():实例方法，获得时间，单位：微秒
+toString():将从getTime()获得的时间转换为年、月日、小时、分钟、秒、星期
+
+（2）Random类
+
+之前学过：0.0<=Math.random()<1.0
+
+java.util.Random
+public class test1{
+	public static void main(String[] args){
+	//	Random ra=new Random();  <----------错误写法
+		java.util.Random ra=new java.util.Random();
+		System.out.println(ra.nextInt(20));
+	}
+}
+Random();//括号里可以自己指定种子，不填默认为当前时间
+next.typeName();//获得type类型的随机值，注意首字母大写
+例如：nextInt、nextLong......
+
+
+
