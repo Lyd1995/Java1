@@ -1,0 +1,103 @@
+1、声明数组
+elementType[] arrayRefVar;
+
+2、创建数组
+arrayRevVar = new elementType[arraysize];
+
+声明、创建、赋值：
+elementType[] arrayRefVar=new elementType[arraysize];
+
+声明、创建、初始化：
+elementType[] arrayRefVar={value1,value2,value3,......valuen};
+
+3、数组大小与默认值
+
+数组大小：创建数组的时候必须给出大小，且给定后不可变化，可以使用arrayRefVar.length求得数组大小
+
+数组的默认值
+数值型：0
+char型：'\u0000'
+boolean型：false
+
+4、数组下标变量
+
+arrayRefVar[index];
+index:下标变量
+
+public class test1{
+	public static void main(String[] args){
+		char[] ch={'s','d','f','s','h'};
+		System.out.println(ch);
+		System.out.println(ch[1]);
+	}
+}
+注意上述程序，打印char型数组全体元素与单个元素的区别
+
+5、for-each循环
+语法：
+for(elementType element: arrayRefVar){
+//对arrayRefVar数组中的每一个元素element进行如下操作
+}
+
+6、数组的赋值（与C++不一样）
+
+有两个同类型的数组list1与list2
+list1=list2;
+这条语句不能把list2的内容复制到list1，而是让list1指向list2的内容，这样list1与list2都指向了同一个数组
+而list1原先指向的内容便不能被引用了，会被当做垃圾处理
+
+复制方法：
+（1）使用循环语句逐个复制
+（2）使用System类中的静态方法arraycopy
+arraycopy(sourceArray,src_pos,targetArray,tar_pos,length);
+sourceArray,
+src_pos,源数组的复制起点
+targetArray,
+tar_pos,目标数组的开始点
+length,复制长度
+注意：这个方法没有给目标数组分配空间，因此在使用前，必须创建目标数组并分配空间
+复制完成后，sourceArray与targetArray具有相同的内容，但是占有独立的内存空间
+
+（3）使用clone方法复制
+
+
+
+7、方法传递
+
+匿名数组：printArray(new int[]{1,5,6,9});
+
+这里使用的是值传递，也就是说在方法里对数组进行修改会影响方法外的数组的值
+事实上，这里是将数组的引用传递过去了，因此对数组的修改，直接反应在数组上
+例如：
+	public static void swap(int n1,int n2){
+		int temp=n1;
+		n1=n2;
+		n2=temp;
+	}
+	
+	public static void swapFirstTwoArray(int[] array){
+		int temp=array[0];
+		array[0]=array[1];
+		array[1]=temp;	
+	}
+这两个交换函数，第一个函数无法实现交换功能，如：
+swap(array[0],array[1]);
+这么写，并不能完成交换
+
+方法中返回数组：
+	public static int[] reverse(int[] array){
+		int[] ar=new int[array.length];
+		int i,j=array.length-1;
+		for(i=0;i<array.length;i++,j--){
+			ar[i]=array[j];
+		}
+		return ar;
+	}
+
+
+
+
+
+
+
+
