@@ -61,7 +61,6 @@ length,复制长度
 （3）使用clone方法复制
 
 
-
 7、方法传递
 
 匿名数组：printArray(new int[]{1,5,6,9});
@@ -94,8 +93,48 @@ swap(array[0],array[1]);
 		return ar;
 	}
 
+8、可变长的参数列表
 
+有的方法不确定有几个参数（必须是同类型的），可以使用可变长参数列表
+语法：
+typeName...parameterName;(类型名...参数名)
+在方法声明中，类型名之后紧跟...，只能给方法中指定一个可变长参数，同时这个可变长参数必须是最后一个参数
 
+	public static int max(int...number){
+		int max=number[0];
+		for(int i=0;i<number.length;i++)
+			if(max<number[i])
+				max=number[i];
+		return max;	
+	}
+多个数值求最大值
+这里的number是一个数组，Java在调用这个方法时，会创建一个数组，并把参数传给它
+
+9、Arrays类
+java.util.Arrays类
+（1）java.util.Arrays.sort：
+int[] numbers={1,5,3,9,34,23,57,90,33,2,67};
+java.util.Arrays.sort(numbers);//对整个数组进行排序
+java.util.Arrays.sort(numbers,1,5);//对numbers[1]到numbers[5-1]进行排序
+
+（2）java.util.Arrays.binarySearch：
+
+对于排好序的数组，可以采用二分查找法：
+java.util.Arrays.binarySearch(numbers,23);
+对于不存于数组中的元素，返回：-（插入点的下标+1）
+插入点的下标+1：实际上就是该元素在这个数组中的排序位置（最小值的下标为1，最大值的下标为numbers.length）
+java.util.Arrays.binarySearch(numbers,0);//返回-1
+
+（3）java.util.Arrays.equals：
+检测两个数组是否相等，不仅要求所含元素一样，对应的元素下标也要相同
+
+（4）java.util.Arrays.fill：
+填充整个数组或者部分数组
+int[] numbers={1,8,9,6,5,4,1,85,63,11};	
+java.util.Arrays.fill(numbers,5);
+数组中的元素都被置成5
+java.util.Arrays.fill(numbers,1,7,8);
+数组中，numbers[1]到numbers[7-1]的元素被置为8
 
 
 
