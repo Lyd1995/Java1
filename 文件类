@@ -75,13 +75,17 @@ java.io.PrintWrite
 该类可以创建一个文件，并向文本文件写入数据
 java.io.PrintWrite output=new java.io.PrintWrite(filename);
 
-实例方法：
+1、实例方法：
 print();//可以输出的类型：String、char、char[]、int、long、double、float、Boolean
+println()
+close()
 
-静态方法：
+2、静态方法：
 PrintWrite(file:File);//构造方法，为特定的文件对象创建一个java.io.PrintWrite类的对象
 PrintWrite(filename:String);//构造方法，为特定的文件名字符串创建一个java.io.PrintWrite类的对象
 
+
+3、实例
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -132,3 +136,54 @@ Is it absolute ? false
 Is it hidden ? false
 Absolute payh is C:\Users\84235\eclipse-workspace\test1\scores.txt
 Last modified on Tue Sep 11 20:12:51 GMT+08:00 2018
+写完文件后，必须使用close()方法关闭文件，若没有调用这个方法，数据无法正确保存
+
+（二）使用Scanner读取数据
+java.util.Scanner类
+Scanner input=new Scanner(System.in);//  读取控制台输入
+Scanner input=new Scanner(new File(filename)); // 读取文件信息
+
+1、静态方法
+Scanner();
+
+2、实例方法
+hasNext():boolean
+close():void
+next():String
+nexxtLine():String
+nextByte()// Byte 可以换为Int、Long、Double、Short等等基本数据类型
+
+useDelimiter(pattern:String):Scanner 设置这个扫描器的分隔模式并返回这个扫描器
+
+3、实例
+
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+
+public class WriteData {
+	public static void main(String[] args) {
+		java.io.File file=new java.io.File("scores.txt");
+		
+		try {
+			java.util.Scanner input=new java.util.Scanner(file);
+			while(input.hasNext()) {
+				String firstName=input.next();
+				String mi=input.next();
+				String lastName=input.next();
+				
+				int score=input.nextInt();
+				System.out.println(firstName+" "+mi+" "+lastName+" "+score);	
+			}
+			input.close();
+		} 
+		catch (FileNotFoundException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}	
+	}
+}
+输出：
+John T Simth 90
+Eric K Jones 85
+可以看出，读取时，先将一行读完才会去下一行，并且以空格键作为分隔符
