@@ -158,12 +158,46 @@ toUpperCase()
 
 只要用到了Srting类，就可以用StringBuilder类/StringBuffer类
 并且可以在StringBuilder类/StringBuffer类进行添加、插入或者追加新内容，但是String对象一旦创建，便不可更改
-增加：
-append(ch:char[]):将数组ch插入到字符串生成器
+（一）增加：
+append(ch:char[]):将数组ch插入到字符串生成器最后面
 append(ch:char[],offset:int,len,int):插入数组ch的子串
-
-
+append(v:aPrimitiveType);将一个基本类型值作为字符串追加到这个生成器
+append(s:String);将一个字符串追加到这个生成器
+（二）删除：
 delete(startIndex,endIndex)
-delete(index)
+deleteCharAt(index)
+（三）插入：
+insert(index,a:char[],offset,len)：index是指数组a的开始下标，offset是指StringBuffer的偏移量（实际就是下标），len指插入子串的长度
+insert(offset:int,a:char[]):将数据插入这个生成器的偏移量处
+insert(offset:int,v:aPrimitiveType);
+insert(offset:int,s:String);
+（四）其他：
+replace(startIndex:int,endIndex:int,s:String);将从startIndex到endIndex-1处的字符串，用字符串s代替
+reverse();
+setCharAT();
 
-insert(index,char[] a,offset,len)：index是指数组a的开始下标，offset是指StringBuffer的偏移量（实际就是下标）
+toString()
+capacity()：返回字符串生成器的容量（最大能装多少字符）
+charAt()
+length():返回字符个数（不是生成器的长度！！！！）
+setLength():在这个生成器中设置新长度
+subString(startIndex:int):返回从startIndex的子串
+subString(startIndex:int,endIndex:int):
+trimToSize(void);减小字符串生成器所用大小
+
+六、命令行参数
+main(String[] args):main方法也是可以被其他类调用的
+
+在命令行中输入：
+例如：
+java test "java" alph 77
+这里
+"java"、alph、77三个参数会被当成字符串保存到args[]数组
+相当于java解释器创建了一个字符串数组：
+String[] args=new String[3];
+
+
+
+
+
+
