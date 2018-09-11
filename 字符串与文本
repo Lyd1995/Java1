@@ -129,3 +129,39 @@ valueOf()：有很多重载方法，可以将int long float Boolean double char 
 3、格式化字符串：
 String.format(format,item1,item2....)：返回一个格式化后的字符串
 可以指定位宽、小数点后保留几位
+例如：
+String s = String.format("%5.2f",45.556);
+等价于：
+String s = "45.56";
+
+四、字符类Character
+
+java为每个基本数据类型都提供了一个包装类：
+Character  Boolean  Byte  Short  Integer  Long  Float  Double
+
+提供的方法：
+Character():构造方法（构造方法必须与类名一样！！！）
+charValue()
+compareTo()
+equals()
+
+isDigit()
+isLetter()
+isLetterOrDigit()
+isLowerCase()
+isUpperCase()
+
+toLowerCase()
+toUpperCase()
+
+五、StringBuilder类/StringBuffer类
+
+只要用到了Srting类，就可以用StringBuilder类/StringBuffer类
+并且可以在StringBuilder类/StringBuffer类进行添加、插入或者追加新内容，但是String对象一旦创建，便不可更改
+增加：
+append()
+
+delete(startIndex,endIndex)
+delete(index)
+
+insert(index,char[] a,offset,len)：index是指数组a的开始下标，offset是指StringBuffer的偏移量（实际就是下标）
