@@ -1,1 +1,35 @@
+一、方法
+File(pathName:String);为特定路径名创建一个File对象；这里的路径名可以是目录；也可以是一个文件
 
+File(parents:String,child:String);为目录parents下的child创建一个File对象，这个child可以是一个文件名；也可以是一个子目录
+
+File(parents:File,child:String);为目录parents下的child创建一个File对象，这个parents是一个File对象
+
+返回Boolean型：
+exists();      //如果File对象表示的文件或者目录存在，则返回true
+canRead();     //如果File对象表示的文件存在且可读，则返回true
+canWrite();
+isDirectory(); //如果File对象表示的是一个目录，则返回true
+isFile();
+isAbsolute();  //如果使用的是绝对路径名创建File对象，则返回true
+isHidden();    //如果File对象中表示的文件被隐藏，则返回true
+
+被隐藏：依赖系统，window中，可以在文件属性对话框中选择
+
+返回String：
+getAbsolutePath();
+getCanonicalPath();
+getName();
+getPath();
+getParents();
+
+返回long型
+lastModified()：
+length()：
+
+返回File型数组
+listFile()：
+
+返回boolean型：
+delete():
+renameTo():
