@@ -93,3 +93,22 @@ matches(str):如果str以.*结束，则可以匹配0个或者多个任意字符
 		String s2="hello world ";
 		System.out.println(s2.matches("hell.*"));
 
+replaceFirst(oldString,newString):
+replaceAll(oldString,newString):
+split(delimiter:String):
+以上三个方法也可以使用类似的匹配方法（正则表达式）
+String str1 = new String("a+b##sdf+vc$$fdas");
+String str2 = new String("java,,c++??;;c#..");		
+System.out.println(str1.replaceAll("[$+#]"," "));
+System.out.println(str2.replaceAll("[,.?;]"," "));	
+输出：
+a b  sdf vc  fdas
+java  c++    c#  
+
+indexOf(s:String):找出字符串s第一次出现的下标，不匹配返回-1
+indexOf(s:String,fromIndex:int):在下标fromIndex之后，找出字符串s第一次出现的下标，不匹配返回-1
+indexOf(ch:char):
+indexOf(ch:char,fromIndex:int):
+
+lastIndexOf(s:String):找出字符串s最后一次出现的下标，不匹配返回-1
+其他用法同indexOf()
