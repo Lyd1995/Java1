@@ -33,3 +33,102 @@ listFile()：
 返回boolean型：
 delete():
 renameTo():
+
+在创建路径时不要用\（反斜杠）因为这是转义符，因此改用/或者\\
+
+import java.io.File;
+public class TestFileClass {
+	public static void main(String[] args) {
+		java.io.File file=new java.io.File("image/us.txt");	
+		System.out.println("Does it exists ? "+file.exists());
+		System.out.println("The file has "+file.length()+" bytes ");
+		System.out.println("Can it be read ?  "+file.canRead());
+		System.out.println("Can it be Writed ? "+file.canWrite());
+		System.out.println("Is it a directory ? "+file.isDirectory());
+		System.out.println("Is it a file ? "+file.isFile());
+		System.out.println("Is it absolute ? "+file.isAbsolute());
+		System.out.println("Is it hidden ? "+file.isHidden());
+		System.out.println("Absolute payh is "+file.getAbsolutePath());
+		System.out.println("Last modified on "+new java.util.Date(file.lastModified()));
+		
+	}
+}
+输出：
+Does it exists ? false
+The file has 0 bytes 
+Can it be read ?  false
+Can it be Writed ? false
+Is it a directory ? false
+Is it a file ? false
+Is it absolute ? false
+Is it hidden ? false
+Absolute payh is C:\Users\84235\eclipse-workspace\test1\image\us.txt
+Last modified on Thu Jan 01 08:00:00 GMT+08:00 1970
+为什么和书上的不一样？
+因为默认文件夹下的image文件下没有us.gif文件
+不能为不存在的文件创建File对象
+
+二、文件输入和输出
+
+（一）使用PrintWrite写数据
+java.io.PrintWrite
+该类可以创建一个文件，并向文本文件写入数据
+java.io.PrintWrite output=new java.io.PrintWrite(filename);
+
+实例方法：
+print();//可以输出的类型：String、char、char[]、int、long、double、float、Boolean
+
+静态方法：
+PrintWrite(file:File);//构造方法，为特定的文件对象创建一个java.io.PrintWrite类的对象
+PrintWrite(filename:String);//构造方法，为特定的文件名字符串创建一个java.io.PrintWrite类的对象
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
+public class WriteData {
+	public static void main(String[] args) {
+		java.io.File file=new java.io.File("scores.txt");	
+		if(file.exists())
+		{
+			System.out.println("File is exists ");
+			System.exit(0);
+		}
+		
+		java.io.PrintWriter output;
+		try {
+			output = new java.io.PrintWriter(file);
+			output.print("John T Simth ");
+			output.println(90);
+			output.print("Eric K Jones ");
+			output.println(85);
+			
+			output.close();
+		} catch (FileNotFoundException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		
+		System.out.println("Does it exists ? "+file.exists());
+		System.out.println("The file has "+file.length()+" bytes ");
+		System.out.println("Can it be read ?  "+file.canRead());
+		System.out.println("Can it be Writed ? "+file.canWrite());
+		System.out.println("Is it a directory ? "+file.isDirectory());
+		System.out.println("Is it a file ? "+file.isFile());
+		System.out.println("Is it absolute ? "+file.isAbsolute());
+		System.out.println("Is it hidden ? "+file.isHidden());
+		System.out.println("Absolute payh is "+file.getAbsolutePath());
+		System.out.println("Last modified on "+new java.util.Date(file.lastModified()));
+	}
+}
+输出：
+一个名为score.txt的文件
+Does it exists ? true
+The file has 34 bytes 
+Can it be read ?  true
+Can it be Writed ? true
+Is it a directory ? false
+Is it a file ? true
+Is it absolute ? false
+Is it hidden ? false
+Absolute payh is C:\Users\84235\eclipse-workspace\test1\scores.txt
+Last modified on Tue Sep 11 20:12:51 GMT+08:00 2018
