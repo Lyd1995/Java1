@@ -1,1 +1,95 @@
-1、字符串类：String
+一、字符串类：String
+
+String newString = new String("字符串");
+例如：
+String newString = new String("welcome to java!");
+由于java将字符串直接量看做是String对象，因此也可以写成：
+String newString = "welcome java!";
+
+也可以用字符数组来创建一个字符串
+char[] charArray={'s','e','r','t','v'};
+String newString = new String(charArray);
+
+二、不可变字符串
+
+String s = "java";
+s="HTMY";
+第一条语句创建了一个内容为java的字符串对象，并把它的引用赋值给s
+第二条语句创建了一个内容为HTMY的新的字符串对象，并把它的引用赋值给了s，这样s就不再指向java而是HTMY了，但是原来的java对象还在，只是不能访问它了
+
+因为字符串在程序设计里是不能改变的，所有对具有相同内容的字符串直接量使用同一个实例（联想一下Python，相同的内容的字符串，id号也相同）
+但是使用new创建一个对象，即使内容相同，也不是同一对象，上述的重点：   字符串直接量
+
+三、字符串类方法
+
+（一）==操作符
+这个操作符是判定两个字符串变量是否指向同一个对象
+
+（二）equals()判断两个字符串的内容是否相同
+
+    1、java中equals和==的区别 值类型是存储在内存中的堆栈（简称栈），而引用类型的变量在栈中仅仅是存储引用类型变量的地址，而其本身则存储在堆中。
+　　2、==操作比较的是两个变量的值是否相等，对于引用型变量表示的是两个变量在堆中存储的地址是否相同，即栈中的内容是否相同。
+　　3、equals操作表示的两个变量是否是对同一个对象的引用，即堆中的内容是否相同。
+　　4、==比较的是2个对象的地址，而equals比较的是2个对象的内容，显然，当equals为true时，==不一定为true。 
+
+public class Test {
+	public static void main(String[] args) {
+		String str1 = new String("hello");
+		String str2 = new String("hello");
+		String s1="hello";
+		String s2="hello";
+		        
+		System.out.println("str1==str2 ? "+(str1==str2));
+		System.out.println("str1 equal str2 ? "+str1.equals(str2));
+		
+		System.out.println("s1==s2 ? "+(s1==s2));
+		System.out.println("str1==s2 ? "+(str1==s2));
+		System.out.println("str1 equal s2 ? "+str1.equals(s2));
+	}
+}
+输出：
+str1==str2 ? false
+str1 equal str2 ? true
+s1==s2 ? true
+str1==s2 ? false
+str1 equal s2 ? true
+可见，当使用new创建一个新的对象时，即使两者内容相同，也不是同一个对象（和Python不同之处）
+
+（三）compareTo()方法
+s1.compare(s2);
+返回的实际值是依据s1和s2从左到右数，第一个不同字符之间的距离得出的（统一码的大小）
+例如："abc"和"abg"，由于字符c（99）和字符g（103）之间的距离为-4，所以返回值：-4
+
+equalsIgnoreCase()
+compareToIgnoreCase()
+上述两个方法和之前的类似，不过会忽略字母的大小写
+
+regionMatches()：比较两个字符串是否部分相等，四个参数，（源字符串偏移，目标字符串名，目标字符串偏移，长度）
+		String s1="dssahelloffdsd";
+		String s2="hello";
+		System.out.println(s1.regionMatches(4, s2, 0, 5));
+    输出：true
+startswith(str)
+endswith(str)
+判断前缀和后缀是否为str
+
+（四）基本方法
+length():返回字符串的长度，下标从0开始到length()-1
+charAt(index):返回字符串指定下标的字符
+concat(str):返回连接这个字符串和字符串str所构成的新的字符串
+
+subString(begin,end):返回子串（左闭右开）
+toLowerCase()
+toUpperCase()
+trim():返回去掉两端的空白字符之后的新字符串
+replace(oldchar,newchar):返回一个新的字符串，将原来字符串中的oldchar全部替换为newchar
+replaceFirst(oldString,newString):
+replaceAll(oldString,newString):
+split(delimiter:String):返回用界定符分隔的子串所构成的一个字符串数组
+
+（五）模式匹配
+matches(str):如果str以.*结束，则可以匹配0个或者多个任意字符
+例如：
+		String s2="hello world ";
+		System.out.println(s2.matches("hell.*"));
+
