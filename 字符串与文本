@@ -112,3 +112,20 @@ indexOf(ch:char,fromIndex:int):
 
 lastIndexOf(s:String):找出字符串s最后一次出现的下标，不匹配返回-1
 其他用法同indexOf()
+
+（六）字符串与其他类型的转换
+
+1、字符串转数组
+toCharArray():
+char[] ch="javac".toCharArray();
+
+getChars(src_begin,src_end,char[] dst,dst_begin):  复制子串（[src_begin,src_end-1]）到目的字符数组[dst_begin,dst_begin+src_end-src_begin]
+
+2、数组转字符串
+String.valueOf(char[] a);
+
+valueOf()：有很多重载方法，可以将int long float Boolean double char 等类型转为字符串类 
+
+3、格式化字符串：
+String.format(format,item1,item2....)：返回一个格式化后的字符串
+可以指定位宽、小数点后保留几位
