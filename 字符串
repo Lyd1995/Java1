@@ -154,12 +154,14 @@ isUpperCase()
 toLowerCase()
 toUpperCase()
 
-五、StringBuilder类/StringBuffer类
+五、StringBuilder类/StringBuffer类（字符串生成器）
 
 只要用到了Srting类，就可以用StringBuilder类/StringBuffer类
 并且可以在StringBuilder类/StringBuffer类进行添加、插入或者追加新内容，但是String对象一旦创建，便不可更改
 增加：
-append()
+append(ch:char[]):将数组ch插入到字符串生成器
+append(ch:char[],offset:int,len,int):插入数组ch的子串
+
 
 delete(startIndex,endIndex)
 delete(index)
