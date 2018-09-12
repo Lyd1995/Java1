@@ -21,3 +21,4 @@ public class ReplaceText {
 		
 	}
 }
+/* 这里对文件的输入、输出格式都没有强制要求 ， 由自己决定*/
