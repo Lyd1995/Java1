@@ -110,3 +110,22 @@ super.方法名（参数）
 （三）Object类（java.lang.Object类）
 Java中的所有类都源于Object类，如果在定义一个类时，没有说明父类，那就默认是Object类
 
+1、toString()方法
+toString()方法的签名（方法头）
+public String toString();
+
+调用一个对象的toString()会返回一个描述该对象的字符串，默认情况下：
+所属类名+at符号+该对象十六进制形式的内存地址
+
+
+二、多态
+每个子类的实例都是其父类的实例
+
+子类是父类的特殊化
+
+一个方法可以在父类定义而在它的子类覆盖
+
+1、声明类型与实际类型
+Object o = new GeometricObject;
+o的声明类型是Object，但是它的实际类型是GeometricObject；
+o所调用的方法由它的实际类型决定
