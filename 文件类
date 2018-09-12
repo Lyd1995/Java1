@@ -187,3 +187,11 @@ public class WriteData {
 John T Simth 90
 Eric K Jones 85
 可以看出，读取时，先将一行读完才会去下一行，并且以空格键作为分隔符
+
+Scanner的工作方式：
+next...();都称为令牌读取方法（...代表Byte、Int、Long....）
+它们会读取分隔符分隔开的令牌，分隔符默认为空格，可以使用useDelimiter()方法设置新的分隔符
+
+nextByte();会将读取的数据自动转为Byte型
+next():读取一个字符串，不做转换
+nextLine():读取一个字符串，以行分隔符作为结束标志
