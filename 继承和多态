@@ -16,7 +16,7 @@ OOP中，可以从已有的类中派生出新的类，这被称为继承
 语法：
 public class 子类名 extend 父类名
 
-（二）super
+（二）super（父类）
 与this相似，super是指这个super出现的类的父类（简单来说，就是指向父类）
 
 1、调用父类的构造方法
@@ -52,3 +52,61 @@ super();
 在任何情况下，构造一个类的实例时，将会调用沿着继承链的所有父类的构造方法。
 
 当构造一个子类的对象时，子类的构造方法会在完成自己的任务之前，首先调用它的父类的构造方法
+
+public class Faculty extends Employee {
+	public static void main(String[] args) {
+		new Faculty();
+	}
+	
+	public Faculty() {
+		System.out.println("(4) Peforms Faculty tasks");
+		// TODO 自动生成的构造函数存根
+	}
+}
+class Employee extends Person {
+	public Employee() {
+		this("(2)Invoke Employee's overloaded constructor");
+		System.out.println("(3)Performs Employee's tasks");
+		// TODO 自动生成的构造函数存根
+	}
+	public Employee(String s) {
+		//this("(2)Invoke Employee's overloaded constructor")
+		System.out.println(s);
+		// TODO 自动生成的构造函数存根
+	}
+}
+class Person{
+	public Person() {
+		System.out.println("(1)Performs Person's tasks");
+		// TODO 自动生成的构造函数存根
+	}
+}
+输出：
+(1)Performs Person's tasks
+(2)Invoke Employee's overloaded constructor
+(3)Performs Employee's tasks
+(4) Peforms Faculty tasks
+
+3、调用父类方法
+super.方法名（参数）
+
+4、覆盖方法
+有时子类需要修改从父类那里继承的方法，不需要更改方法名，直接建立一个同名的方法（有点像类变量与局部变量的关系）
+由于父类与子类都有同名方法，如果想调用父类的：
+super.方法名（参数）
+
+
+5、重载方法
+子类如果要重载父类的方法，修饰符和返回类型必须相同，参数列表不同
+
+覆盖于重载的区别：
+（1）覆盖：子类的方法头与父类的方法头一模一样，连参数列表都相同，但是方法体不同
+（2）重载：子类的修饰符、返回值类型与父类的方法一样，但是参数列表不一样
+
+当子类使用与父类相同名字的方法时：
+（1）覆盖：使用子类的方法
+（2）重载：根据参数，决定使用子类的方法还是父类的方法
+
+（三）Object类（java.lang.Object类）
+Java中的所有类都源于Object类，如果在定义一个类时，没有说明父类，那就默认是Object类
+
