@@ -1,0 +1,84 @@
+一、不可变对象与类
+
+通常来说，一个对象创建后，它的内容是允许改变的，但是也有不允许改变的，比如String类
+虽然它有方法可以替换实例中的特定字符串，但是它本身不会改变，这个方法是创建了一个新的String对象，并将修改后的内容赋予它
+
+要使一个类称为不可变的，必须满足以下条件：
+1、所有的数据域都是私有的
+2、没有修改器方法
+3、没有一个访问器方法，它会返回一个指向可变数据域的引用
+
+二、变量的作用域
+
+1、一个类的实例变量和静态变量统称为：类变量（或者数据域）
+
+2、在方法内部定义的变量为：局部变量
+
+3、不管在何处声明，类变量的作用域都是整个类
+
+4、类变量只能声明一次，但是在一个方法内不同的非嵌套块中，可以声明多次相同的变量名
+
+5、局部变量可以覆盖类变量
+
+
+三、this引用（相当于Python里的self）
+
+this是指向调用对象本身的引用名
+
+四、对象的组合
+
+一个对象可以包含另一个对象，这两个对象之间的关系称为组合
+有许多对象的数据域都有String对象或者是double、int等，这就是组合
+
+1、聚集关系与组合关系
+
+组合实际上是聚集关系的一种特殊形式
+
+聚集模拟了具有关系，表示两个对象之间的归属关系
+
+归属关系中的所有者对象称为：聚集对象，而它的类称为：聚集类
+
+归属关系中的从属对象称为：被聚集对象，而它的类称为：被聚集类
+
+一个对象可以被几个其他聚类对象所拥有，如果一个对象只归属于一个聚集对象，那么它和聚集对象的关系就是组合
+
+例如：
+
+public class BMI {
+	private String name;
+	private int age;
+	private double height;
+	private double weight;
+	
+	public static final double KILOGRAMS_PER_POUND=0.45359237;
+	public static final double METERS_PER_INCH=0.45359237;
+	
+	public BMI(String name,int age,double height,Double weight) {
+		this.name=name;
+		this.age=age;
+		this.height=height;
+		this.weight=weight;
+	}
+	public double getBMI() {
+		double bmi=weight*KILOGRAMS_PER_POUND/
+				((height*METERS_PER_INCH)*(height*METERS_PER_INCH));
+		return bmi;
+	}
+	
+	public String getStatus() {
+		double bmi=getBMI();
+		if(bmi<18)
+			return "underweight";
+		else if(bmi<24)
+			return "normal weight";
+		else if(bmi<29)
+			return "overweight";
+		else 
+			return "seriously overweight";
+	}
+}
+在这个BMI类中，包含String类，BMI类的一个实例就是聚集对象，String类的一个实例是被聚集对象
+
+2、多重性
+
+在一个关系中的每个类可以指定一个多重性，这个多重性可能是一个数字或者是数字范围，它表明了关系中要涉及的类的对象个数
