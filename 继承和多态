@@ -198,3 +198,25 @@ Student b = (Student)o;
 语法：
 类名 instanceof 对象名 （返回一个boolean值，true表示：对象是该类的实例，可以进行显式转换）
 
+
+4、Arraylist类
+数组线性表
+java里的数组一旦创建，就不能更改数组的大小
+java提供Arraylist类来存储不限定个数的对象
+
+add(o:Object);
+add(index:int,o:Object);在指定下标处，添加新的对象o
+
+clear();删除线性表中所有元素
+
+contains(o:Object):如果这个线性表包含元素o，则返回true
+get(index:int):获得指定下标的元素
+
+indexOf(o:Object):返回元素o在线性表中，第一次出现的下标
+lastIndexOf(o:Object);
+isempty();
+
+remove(o:Object);删除线性表中的元素o
+size();返回线性表中的元素个数
+
+set(index:int,o:Object);修改index下标处的元素，改为元素o
