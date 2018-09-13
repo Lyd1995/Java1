@@ -117,6 +117,15 @@ public String toString();
 调用一个对象的toString()会返回一个描述该对象的字符串，默认情况下：
 所属类名+at符号+该对象十六进制形式的内存地址
 
+2、equals()方法
+它的签名（方法头）：
+public boolean equals(Object o){
+   return (this==o);
+}
+可以看到，实际上，它是在判断两个引用是否为同一对象，而不是判断两个对象的内容是否相等
+因此，使用时，需要覆盖这个方法
+用于判断两个对象是否相等
+
 
 二、多态
 每个子类的实例都是其父类的实例
@@ -129,3 +138,63 @@ public String toString();
 Object o = new GeometricObject;
 o的声明类型是Object，但是它的实际类型是GeometricObject；
 o所调用的方法由它的实际类型决定
+
+2、动态绑定
+工作机制：假设对象o是类C1,C2,C3....Cn的实例，其中：C1是C2的子类，C2是C3的子类.....Cn-1是Cn的子类；也就是说Cn是最通用的类，C1是最特殊的类
+如果对象o调用方法p，那么java虚拟机会依次在类C1、C2、....Cn中查找方法p的实现，直到找到为止
+例如：
+
+public class DynamicBindingDemo {
+	public static void main(String[] args) {
+		m(new GraduateStudent());
+		m(new Student());
+		m(new Person());
+		m(new Object());
+	}
+	
+	public static void m(Object o) {
+		System.out.println(o.toString());
+	}
+}
+
+class GraduateStudent extends Student {
+	public String toString() {
+		return "GraduateStudent";
+	}
+}
+
+class Student extends Person{
+	public String toString() {
+		return "Student";
+	}
+}
+
+class Person extends Object{
+	public String toString() {
+		return "Person";
+	}
+}
+输出：
+GraduateStudent
+Student
+Person
+java.lang.Object@7852e922
+
+
+3、对象转换
+上面的m(new Student())语句等价于：
+Object o = new Student();
+m(o);
+然而：Student b = o;语句会报编译错误
+其原因是：Student类的对象一定是Object类的对象，但是Object类的对象不一定是Student类的对象
+这时想要赋值，就要使用对象转换：
+Student b = (Student)o;
+
+(1)子类的实例永远可以自动转换为父类实例（向上转换）
+(2)父类实例转换为子类实例，必须使用转换记号（子类名）进行显式转换
+
+在尝试显式转换之前，应该确定这个对象是否为另一个对象的实例，可以利用运算符：instanceof
+注意：instanceof是java的关键字，所以都是小写
+语法：
+类名 instanceof 对象名 （返回一个boolean值，true表示：对象是该类的实例，可以进行显式转换）
+
