@@ -220,3 +220,14 @@ remove(o:Object);删除线性表中的元素o
 size();返回线性表中的元素个数
 
 set(index:int,o:Object);修改index下标处的元素，改为元素o
+
+三、protected数据与方法
+
+类中成员修饰符        在同一类中可访问       在同一包内可访问         在子类内可访问       在不同包可访问
+public                    是                    是                      是                  是
+
+protected                 是                    是                      是                  否 
+
+default                   是                    是                      否                  否   
+
+private                   是                    否                      否                  否  
